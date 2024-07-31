@@ -15,6 +15,6 @@ spec:
       serviceAccountName: webapp-operator-sa
       containers:
       - name: webapp-operator
-        image: aswinvj/kube-operator:2.0.0
+        image: techiescamp/kube-operator:1.0.0
         command: ["kopf", "run", "--all-namespaces", "--verbose", "op.py"]
         imagePullPolicy: Always
