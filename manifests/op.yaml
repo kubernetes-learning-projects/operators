@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-operator
+  template:
+    metadata:
+      labels:
+        app: webapp-operator
+    spec:
+      serviceAccountName: webapp-operator-sa
+      containers:
+      - name: webapp-operator
+        image: aswinvj/kube-operator:2.0.0
+        command: ["kopf", "run", "--all-namespaces", "--verbose", "op.py"]
+        imagePullPolicy: Always
